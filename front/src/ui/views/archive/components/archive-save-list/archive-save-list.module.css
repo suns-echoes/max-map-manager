@@ -1,0 +1,33 @@
+.archiveSaveList {
+	position: fixed;
+	top: 72px;
+	left: 2px;
+	width: 298px;
+	bottom: 0;
+	overflow: hidden;
+
+	border-radius: 8px;
+	box-shadow: 0 -4px 10px #000;
+
+	background: url("/images/steel.png");
+	background-size: cover;
+	background-position-x: left;
+}
+
+.brokenScreen {
+	text-align: center;
+	color: #600;
+}
+
+@keyframes fallOff {
+	0% {
+		transform: translateY(0) rotate(0deg);
+	}
+	100% {
+		transform: translateY(100vh) rotate(160deg);
+	}
+}
+
+.fallOff {
+	animation: fallOff 0.5s ease-in forwards;
+}

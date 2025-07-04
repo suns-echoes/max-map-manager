@@ -1,0 +1,11 @@
+{
+	"typescript.preferences.importModuleSpecifier": "relative",
+	"typescript.preferences.includePackageJsonAutoImports": "on",
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"javascript.preferences.quoteStyle": "single",
+	"typescript.preferences.quoteStyle": "single",
+}

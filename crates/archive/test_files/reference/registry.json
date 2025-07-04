@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "archive": {
+    "map_id_1": {
+      "map": "map1.wrl",
+      "saves": [
+        "save1_1.dta",
+        "save1_2.dta"
+      ]
+    },
+    "map_id_2": {
+      "map": "map2.wrl",
+      "saves": [
+        "save2_1.dta",
+        "save2_2.dta"
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.header {
+	grid-area: header;
+	height: 64px;
+
+	background: url("/images/steel.png");
+	background-size: cover;
+	background-position-y: 0;
+}
+
+.vent {
+	opacity: 0.7;
+}

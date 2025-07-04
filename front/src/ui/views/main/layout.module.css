@@ -1,0 +1,18 @@
+.mainWindowLayout {
+	display: grid;
+	grid-template-areas:
+		"header header header"
+		"left top top"
+		"left mid saveList"
+		"footer footer footer";
+	grid-template-columns: auto 2fr 1fr;
+	grid-template-rows: auto auto 2fr auto;
+	gap: 2px;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+
+	border-radius: 12px;
+	background: url("/images/steel.png") no-repeat center center;
+	background-size: cover;
+}

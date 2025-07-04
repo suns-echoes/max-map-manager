@@ -1,0 +1,15 @@
+[package]
+name = "test_utils"
+version = "0.1.0"
+description = "MAX maps and save files archive"
+authors = ["Aneta Suns"]
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+chrono = "0.4.41"
+colored = "3.0.0"
+ctor = "0.4.2"
+dtor = "0.0.6"
+log = "0.4.27"
+uuid = { version = "1.17.0", features = ["v4"] }

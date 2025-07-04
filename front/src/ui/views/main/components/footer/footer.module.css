@@ -1,0 +1,7 @@
+.footer {
+	grid-area: footer;
+
+	color: var(--text-dark-color);
+
+	padding: 0 64px;
+}

@@ -1,0 +1,8 @@
+.saveList {
+	grid-area: saveList;
+	padding: 8px;
+}
+
+.title {
+	margin: 0;
+}

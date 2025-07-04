@@ -1,0 +1,22 @@
+.mapSwapModal {
+	position: relative;
+	border-radius: 4px;
+	background: url("/images/steel.png");
+	background-position: 100% 100%;
+}
+
+.arrows {
+	margin: 40px 12px 0 12px;
+	color: var(--text-darker-color);
+	font-size: 48px;
+	text-shadow: 2px 2px 4px #0007, -1px -1px 1px #fff7;
+	opacity: 0.7;
+}
+
+.arrowLeft {
+	margin: 0 16px 0 0;
+}
+
+.arrowRight {
+	margin: 0 0 0 16px;
+}

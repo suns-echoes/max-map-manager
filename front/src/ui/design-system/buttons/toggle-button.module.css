@@ -1,0 +1,106 @@
+.toggleButton {
+	position: relative;
+	height: 31px;
+	padding: 3px 8px;
+	color: var(--text-light-color);
+	text-shadow: 1px 1px 2px #0007;
+	background: none;
+	border: 2px solid #0000;
+	border-radius: 4px;
+	border-top-color: #fff2;
+	border-left-color: #fff2;
+	outline: 1px solid #0007;
+	outline-offset: 2px;
+	box-shadow:
+		-2px -2px 2px var(--button-light-border-color),
+		2px 2px 2px var(--button-dark-border-color),
+		inset -2px -2px 3px var(--button-light-border-color),
+		inset 1px 2px 3px var(--button-dark-border-color),
+		2px 2px 6px 2px #0007;
+
+	&:active {
+		outline: 2px solid #0007;
+		outline-offset: 1px;
+		box-shadow:
+			-2px -2px 2px var(--button-pressed-light-border-color),
+			2px 2px 2px var(--button-dark-border-color),
+			inset -2px -2px 3px var(--button-light-border-color),
+			inset 1px 2px 3px var(--button-dark-border-color)
+			;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: calc(100% - 4px);
+		height: calc(100% - 4px);
+		pointer-events: none;
+		background: #7e716820;
+	}
+
+	&.active {
+		position: relative;
+
+		&::after {
+			box-shadow: 0 0 12px var(--glow-color-orange);
+			animation: flicker 1.5s 0.4;
+			border-radius: 4px;
+
+			content: '';
+			position: absolute;
+
+			top: -5px;
+			left: -5px;
+			width: calc(100% + 8px);
+			height: calc(100% + 8px);
+
+			overflow: visible;
+
+			pointer-events: none;
+		}
+	}
+}
+
+@keyframes flicker {
+	0% { opacity: 1; }
+	2% { opacity: 0.1; }
+	4% { opacity: 0.8; }
+	7% { opacity: 0.2; }
+	9% { opacity: 1; }
+	12% { opacity: 0.3; }
+	15% { opacity: 0.9; }
+	17% { opacity: 0.1; }
+	20% { opacity: 0.7; }
+	23% { opacity: 0.2; }
+	25% { opacity: 1; }
+	28% { opacity: 0.4; }
+	31% { opacity: 0.1; }
+	33% { opacity: 0.8; }
+	36% { opacity: 0.2; }
+	39% { opacity: 1; }
+	42% { opacity: 0.1; }
+	44% { opacity: 0.6; }
+	47% { opacity: 0.3; }
+	50% { opacity: 1; }
+	52% { opacity: 0.2; }
+	55% { opacity: 0.9; }
+	58% { opacity: 0.1; }
+	60% { opacity: 0.7; }
+	63% { opacity: 0.2; }
+	66% { opacity: 1; }
+	68% { opacity: 0.4; }
+	71% { opacity: 0.1; }
+	74% { opacity: 0.8; }
+	76% { opacity: 0.3; }
+	79% { opacity: 1; }
+	82% { opacity: 0.1; }
+	84% { opacity: 0.6; }
+	87% { opacity: 0.2; }
+	90% { opacity: 1; }
+	93% { opacity: 0.3; }
+	95% { opacity: 0.1; }
+	98% { opacity: 0.9; }
+	100% { opacity: 1; }
+}

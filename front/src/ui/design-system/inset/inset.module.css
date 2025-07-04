@@ -1,0 +1,12 @@
+.inset {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-top-color: #0007;
+	border-right-color: #fff;
+	border-bottom-color: #fffd;
+	border-left-color: #0009;
+	mix-blend-mode: overlay;
+}

@@ -1,0 +1,121 @@
+@font-face {
+	font-family: "MAX Square";
+	src: url("/fonts/max-square.ttf") format("truetype");
+}
+
+* {
+	box-sizing: border-box;
+	border-collapse: separate;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-smooth: always;
+  	-webkit-user-select: none;
+  	user-select: none;
+	-webkit-user-drag: none;
+	cursor: inherit;
+}
+
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	color: lime;
+	font-family: "MAX Square", Arial, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	background: black;
+	cursor: url("/cursors/default.png") 1 1, default;
+}
+
+button, input, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+h1, h2, h3, h4 {
+	position: relative;
+	margin: 8px 0;
+	font-size: 32px;
+	letter-spacing: 1px;
+
+	div:first-child {
+		color: var(--text-light-color);
+		text-shadow: 1px 1px 4px #0008;
+		mix-blend-mode: color-dodge;
+	}
+
+	div:last-child {
+		position: absolute;
+		width: 100%;
+		top: 2px;
+		left: 2px;
+		color: var(--text-dark-color);
+		-webkit-font-smoothing: none;
+		text-shadow: none;
+		mix-blend-mode: multiply;
+	}
+}
+
+h1 {
+	div:first-child {
+		color: var(--text-lighter-color);
+	}
+}
+
+h2 {
+	font-size: 28px;
+
+	div:first-child {
+		text-shadow: 1px 1px 3px #0008;
+	}
+
+	div:last-child {
+		top: 2px;
+		left: 2px;
+	}
+}
+
+h3 {
+	font-size: 24px;
+
+	div:first-child {
+		text-shadow: 1px 1px 3px #0008;
+	}
+
+	div:last-child {
+		top: 1px;
+		left: 2px;
+	}
+}
+
+h4 {
+	font-size: 20px;
+
+	div:first-child {
+		text-shadow: 1px 1px 3px #0008;
+	}
+
+	div:last-child {
+		top: 1px;
+		left: 1px;
+	}
+}
+
+canvas, img {
+	vertical-align: bottom;
+}
+
+input {
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	line-height: inherit;
+	border: none;
+	outline: none;
+	width: 100%;
+}

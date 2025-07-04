@@ -1,0 +1,47 @@
+.archiveMapSelector {
+	position: fixed;
+	top: 72px;
+	left: 600px;
+	width: calc(100% - 602px);
+	bottom: 0;
+	overflow: hidden;
+
+	border-radius: 8px;
+	box-shadow: 0 -4px 10px #000;
+
+	background: url("/images/steel.png");
+	background-size: cover;
+	background-position-x: right -1px;
+}
+
+.divider {
+	width: 100%;
+	margin: 4px 0 8px 0;
+	height: 1px;
+	background: var(--screen-primary-darker-color);
+}
+
+.installButton {
+	position: relative;
+
+	&::after {
+		position: absolute;
+		top: -5px;
+		left: -5px;
+		width: calc(100% + 8px);
+		height: calc(100% + 8px);
+		content: '';
+		border-radius: 5px;
+		animation: flashGlow 4s infinite;
+
+	}
+}
+
+@keyframes flashGlow {
+	0%, 49.99% {
+		box-shadow: none;
+	}
+	50%, 100% {
+		box-shadow: 0 0 12px var(--glow-color-yellow);
+	}
+}

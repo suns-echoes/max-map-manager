@@ -1,0 +1,15 @@
+.planetBox {
+	width: 156px;
+	height: 156px;
+}
+
+.selectionFrame {
+	margin: 1px;
+	padding: 1px;
+	border-radius: 2px;
+	filter: grayscale(90%) brightness(50%);
+}
+
+.selected .selectionFrame {
+	filter: none;
+}

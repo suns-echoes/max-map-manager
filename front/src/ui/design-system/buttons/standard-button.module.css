@@ -1,0 +1,42 @@
+.standardButton {
+	position: relative;
+	height: 31px;
+	padding: 3px 8px;
+	color: var(--text-light-color);
+	text-shadow: 1px 1px 2px #0007;
+	background: none;
+	border: 2px solid #0000;
+	border-radius: 4px;
+	border-top-color: #fff2;
+	border-left-color: #fff2;
+	outline: 1px solid #0007;
+	outline-offset: 2px;
+	box-shadow:
+		-2px -2px 2px var(--button-light-border-color),
+		2px 2px 2px var(--button-dark-border-color),
+		inset -2px -2px 3px var(--button-light-border-color),
+		inset 1px 2px 3px var(--button-dark-border-color),
+		2px 2px 6px 2px #0007;
+
+	&:active {
+		outline: 2px solid #0007;
+		outline-offset: 1px;
+		box-shadow:
+			-2px -2px 2px var(--button-pressed-light-border-color),
+			2px 2px 2px var(--button-dark-border-color),
+			inset -2px -2px 3px var(--button-light-border-color),
+			inset 1px 2px 3px var(--button-dark-border-color)
+			;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: calc(100% - 4px);
+		height: calc(100% - 4px);
+		pointer-events: none;
+		background: #7e716820;
+	}
+}

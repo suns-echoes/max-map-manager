@@ -1,0 +1,13 @@
+# Logs
+logs
+*.log
+
+# frontend
+node_modules
+dist
+hacks
+
+# Rust
+target
+
+temp

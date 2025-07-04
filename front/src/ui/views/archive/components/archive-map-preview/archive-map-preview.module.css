@@ -1,0 +1,53 @@
+.archiveMapPreview {
+	position: fixed;
+	top: 72px;
+	left: 300px;
+	width: 300px;
+	bottom: 0;
+	overflow: hidden;
+
+	border-radius: 8px;
+	box-shadow: 0 -4px 10px #000;
+
+	background: url("/images/steel.png");
+	background-size: cover;
+	background-position-x: left -300px;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 60px;
+	gap: 16px;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	overflow: hidden;
+}
+
+.content::-webkit-scrollbar {
+	display: none;
+}
+
+.content {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 8px;
+	left: 4px;
+	right: 4px;
+	bottom: 12px;
+	overflow-y: auto;
+	gap: 12px;
+}

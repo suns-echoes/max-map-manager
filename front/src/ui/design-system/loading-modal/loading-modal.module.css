@@ -1,0 +1,71 @@
+.loadingModal {
+	position: relative;
+	width: 210px;
+	background: url("/images/steel.png");
+	background-position: 20% 90%;
+}
+
+.loadingText {
+	height: 80px;
+	color: var(--text-dark-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.loadingSlot {
+	position: relative;
+	margin: -4px;
+	padding: 6px 3px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.loadingSlotCradle {
+	background:
+		linear-gradient(to bottom,
+			#bf8,
+			#060a0cd9 12%,
+			#1428 80%,
+			#1329),
+		repeating-linear-gradient(-135deg,
+			rgba(255,255,255,0.1) 0 1px,
+			transparent 1px 6px);
+	background-position: top center, top center;
+	background-size: 100% 100%, 100% 100%;
+	border: 1px solid rgba(90, 255, 140, 0.12);
+	box-shadow:
+		inset 0 6px 12px rgba(0,0,0,0.65),
+		inset 0 2px 8px rgba(120,255,140,0.06),
+		0 0 96px #0f0a;
+}
+
+.loadingBar {
+	position: relative;
+	left: -1px;
+	max-width: calc(100% - 1px);
+	height: 32px;
+	border-radius: 2px 3px 3px 2px;
+	border: 1px solid rgba(150, 255, 80, 0.6);
+	border-left-color: #0008;
+	border-right-color: #0008;
+	background-image:
+		linear-gradient(180deg, rgba(8, 32, 0, 0.95) 0%, rgba(48, 230, 40, 0.65) 40%, rgba(200, 255, 110, 0.9) 75%),
+		repeating-linear-gradient(-135deg, rgba(0, 0, 0, 0.28) 0 12px, rgba(0, 0, 0, 0.06) 12px 24px),
+		radial-gradient(circle at 20% 25%, rgba(180, 255, 90, 0.55), rgba(0, 0, 0, 0) 45%);
+	background-blend-mode: overlay, multiply, screen;
+	background-blend-mode: difference, darken, multiply;
+	background-position: bottom left, bottom left, bottom left;
+	background-repeat: repeat;
+	box-shadow:
+		inset 0 6px 14px rgba(130, 255, 70, 0.28),
+		inset 0 -6px 10px rgba(0, 0, 0, 0.18),
+		0 4px 10px rgba(70, 180, 20, 0.12),
+		0 0 64px #bf8;
+	transition: width 0.3s ease-in-out;
+}

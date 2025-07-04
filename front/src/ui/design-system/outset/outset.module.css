@@ -1,0 +1,12 @@
+.outset {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-top-color: #fffd;
+	border-right-color: #0009;
+	border-bottom-color: #0007;
+	border-left-color: #fff;
+	mix-blend-mode: overlay;
+}

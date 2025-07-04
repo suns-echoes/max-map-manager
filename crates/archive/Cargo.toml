@@ -1,0 +1,17 @@
+[package]
+name = "archive"
+version = "0.1.0"
+description = "MAX maps and save files archive"
+authors = ["Aneta Suns"]
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+test_utils = { path = "../test_utils" }
+saves = { path = "../saves" }
+blake3 = { version = "1.8.2" }
+chrono = "0.4.41"
+log = "0.4.27"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1.17.0", features = ["v4"] }

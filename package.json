@@ -1,0 +1,28 @@
+{
+  "name": "max-map-manager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+	"dev:hacks": "cd hacks && npm run build:watch",
+    "build": "tsc && vite build",
+	"build:hacks": "cd hacks && npm run build",
+    "lint": "tsc --noEmit -p .",
+    "preview": "vite preview",
+    "tauri": "tauri",
+	"gen-lic": "cargo about generate licenses.hbs --output-file THIRD-PARTY-LICENSES.md"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.8.0",
+    "@tauri-apps/plugin-dialog": "^2.4.2",
+    "@tauri-apps/plugin-opener": "^2.5.0",
+    "@tauri-apps/plugin-process": "^2.3.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.8.4",
+    "@types/node": "^24.7.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9"
+  }
+}

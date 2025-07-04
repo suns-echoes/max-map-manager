@@ -1,0 +1,6 @@
+.saveSlot {
+	padding: 8px 4px 0 4px;
+	border-bottom: 1px solid var(--screen-primary-darker-color);
+
+	color: var(--screen-primary-color);
+}

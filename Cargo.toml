@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "crates/archive",
+    "crates/bmp",
+    "crates/res_reader",
+    "crates/tauri",
+    "crates/saves",
+    "crates/wrl",
+]
+resolver = "3"
+
+# common dependencies
+[workspace.dependencies]

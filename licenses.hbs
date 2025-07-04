@@ -1,0 +1,20 @@
+# THIRD-PARTY COMPONENT LICENSES
+
+This application utilizes the following third-party software components.
+The components are grouped by their respective licenses, which are fully reproduced below.
+
+{{#each licenses}}
+## LICENSE: {{name}}
+
+### TEXT:
+
+{{text}}
+
+### USED BY THE FOLLOWING PACKAGES:
+
+{{#each used_by}}
+* {{crate.name}} (v{{crate.version}})
+{{/each}}
+
+
+{{/each}}

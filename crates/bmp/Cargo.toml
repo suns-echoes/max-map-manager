@@ -1,0 +1,9 @@
+[package]
+name = "bmp"
+version = "0.1.0"
+description = "BMP image processing library"
+authors = ["Aneta Suns"]
+edition = "2024"
+license = "MIT"
+
+[dependencies]

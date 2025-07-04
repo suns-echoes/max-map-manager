@@ -1,0 +1,14 @@
+[package]
+name = "saves"
+version = "0.1.0"
+description = "MAX save file utils"
+authors = ["Aneta Suns"]
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+wrl = { path = "../wrl" }
+test_utils = { path = "../test_utils" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+num_enum = "0.7"

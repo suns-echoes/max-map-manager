@@ -1,0 +1,18 @@
+.setupWindowLayout {
+	width: 720px;
+	background: url("/images/steel.png");
+	background-position: 60% 70%;
+	border-radius: 8px;
+}
+
+.title {
+	text-align: center;
+}
+
+.content > div {
+	border-radius: 12px;
+
+	& > div {
+		height: 400px;
+	}
+}

@@ -1,0 +1,31 @@
+.errorModal {
+	position: relative;
+	width: 301px;
+	height: 231px;
+	padding: 24px;
+	background: url("/images/steel.png");
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.message {
+	padding: 8px;
+	color: var(--text-black-color);
+}
+
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	position: absolute;
+	bottom: 20px;
+	right: 16px;
+	left: 16px;
+}

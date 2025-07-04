@@ -1,0 +1,46 @@
+.disclaimerWindowLayout {
+	width: 720px;
+	background: url("/images/steel.png");
+	background-position: 60% 70%;
+	border-radius: 8px;
+}
+
+.title {
+	text-align: center;
+}
+
+.content > div {
+	border-radius: 12px;
+
+	& > div {
+		height: 400px;
+	}
+}
+
+.disclaimerText {
+	overflow: hidden;
+	color: red !important;
+
+	& > p {
+		margin: 1em 0;
+	}
+}
+
+.disclaimerText::-webkit-scrollbar {
+	display: none;
+}
+
+.disclaimerText {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.disclaimerText {
+	position: absolute;
+	top: 24px;
+	left: 20px;
+	right: 20px;
+	bottom: 40px;
+	overflow-y: auto;
+	gap: 12px;
+}

@@ -1,0 +1,17 @@
+.archiveWindowLayout {
+	& > div {
+		transform: translateY(100vh);
+		transition: transform 500ms ease;
+
+		&.open {
+			transform: translateY(0);
+		}
+	}
+
+	& > div:nth-child(2) {
+		transition-delay: 0.1s;
+	}
+	& > div:nth-child(3) {
+		transition-delay: 0.2s;
+	}
+}
