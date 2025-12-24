@@ -12,6 +12,7 @@ import { LogicalSize } from '@tauri-apps/api/dpi';
 import { exit } from '@tauri-apps/plugin-process';
 import { listen } from '@tauri-apps/api/event';
 
+import { be } from '^lib/be';
 import { sleep } from '^lib/flow/sleep';
 
 import '^events/window-resize-event';
@@ -59,6 +60,7 @@ window._ = [
 			AppState.focusView(SetupViewState);
 		}, 300);
 	},
+	be,
 ];
 
 // @ts-ignore
