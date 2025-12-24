@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schema.tauri.app/config/2",
 	"productName": "max-map-manager",
-	"version": "0.9.1",
+	"version": "0.9.2",
 	"identifier": "max-map-manager",
 	"build": {
 		"beforeDevCommand": "npm run dev",
@@ -22,7 +22,14 @@
 			}
 		],
 		"security": {
-			"csp": null
+			"csp": "default-src 'self' ipc: http://ipc.localhost; img-src 'self' be: http://be.localhost",
+			"devCsp": "default-src 'self' http://localhost:1420 ws://localhost:1420; img-src 'self' data: http://localhost:1420",
+			"assetProtocol": {
+				"enable": true,
+				"scope": [
+					"be"
+				]
+			}
 		}
 	},
 	"bundle": {

@@ -16,11 +16,14 @@ pub fn verify_game_path_command(path: String) -> Result<bool, String> {
 		return Err(msg);
 	}
 
-	let max_ref_file_path = path_buf.join("MAX.RES");
+	let mut max_ref_file_path = path_buf.join("MAX.RES");
 	if !max_ref_file_path.exists() {
-		let msg = format!("MAX.RES file does not exist in the provided game path: {:?}", max_ref_file_path);
-		log::error!("{}", msg);
-		return Err(msg);
+		max_ref_file_path = path_buf.join("max.res");
+		if !max_ref_file_path.exists() {
+			let msg = format!("MAX.RES file does not exist in the provided game path: {:?}", max_ref_file_path);
+			log::error!("{}", msg);
+			return Err(msg);
+		}
 	}
 
 	if !max_ref_file_path.is_file() {

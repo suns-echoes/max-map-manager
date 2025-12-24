@@ -1,3 +1,4 @@
+import { be } from '^lib/be';
 import { Div, Img, Section } from '^lib/reactive/html-node.elements';
 import { Effect } from '^lib/reactive/effect.class';
 
@@ -114,7 +115,7 @@ export function ArchiveMapPreview() {
 				authorLabel.text(mapInfo.author);
 				dateLabel.text(mapInfo.date);
 				descriptionLabel.text(mapInfo.description.replaceAll('\\n', '\n'));
-				bigmapPreview.element.src = `be://get-wrl-bigmap/${mapInfo.mapHashId}/192`;
+				bigmapPreview.element.src = be(`get-wrl-bigmap/${mapInfo.mapHashId}/192`);
 				bigmapPreviewText.element.style.display = 'none';
 				bigmapPreview.element.style.display = 'block';
 			} else {

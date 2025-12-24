@@ -4,6 +4,7 @@ import { ArchiveViewState } from '^state/archive-view-state';
 import { AppState } from '^state/app-state';
 import { MainViewState } from '^state/main-view-state';
 
+import { be } from '^lib/be';
 import { Effect } from '^lib/reactive/effect.class';
 import { Div, Img, P } from '^lib/reactive/html-node.elements';
 
@@ -126,7 +127,7 @@ export function MapPreview() {
 			}
 		}
 
-		bigmapPreview.element.src = `be://get-wrl-bigmap/${selectedMapHashId}`;
+		bigmapPreview.element.src = be(`get-wrl-bigmap/${selectedMapHashId}`);
 		bigmapPreviewText.element.style.display = 'none';
 		bigmapPreview.element.style.opacity = '1';
 	}).on([MainViewState.selectedMapHashId]).update();

@@ -1,5 +1,6 @@
 import { MainViewState } from '^state/main-view-state';
 
+import { be } from '^lib/be';
 import { Effect } from '^lib/reactive/effect.class';
 import { Div, Img } from '^lib/reactive/html-node.elements';
 
@@ -72,5 +73,5 @@ function mapPlanetNameToImageUrl(planet: PlanetName): string {
 			file_name_prefix = 'SNOW';
 			break;
 	}
-	return `be://get-res-image/${file_name_prefix}_PIC`;
+	return be(`get-res-image/${file_name_prefix}_PIC`);
 }

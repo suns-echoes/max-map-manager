@@ -1,4 +1,8 @@
+import { be } from '^lib/be';
 import { Div, Img, P, Span } from '^lib/reactive/html-node.elements.ts';
+
+import { AppState } from '^state/app-state';
+import { SwapMapViewState } from '^state/swap-map-view-state';
 
 import { swapMaps } from '^actions/swap-maps';
 
@@ -13,8 +17,6 @@ import { StandardButton } from '../buttons/standard-button';
 import { EmptyText } from '../fx/empty-text/empty-text';
 
 import styles from './map-swap-modal.module.css';
-import { SwapMapViewState } from '../../../app-state/swap-map-view-state';
-import { AppState } from '../../../app-state/app-state';
 
 
 interface MapSwapModal {
@@ -39,7 +41,7 @@ export function MapSwapModal() {
 					Inset(8).nodes([
 						Screen(SwapMapViewState, true).nodes([
 							Div().classes('pointer fill-all flex flex-center', styles.selectionFrame).nodes([
-								stars1 = Img().src('be://get-res-image/STAR_PIC').style({
+								stars1 = Img().src(be('get-res-image/STAR_PIC')).style({
 									width: '112px',
 									height: '112px',
 								}),
@@ -59,7 +61,7 @@ export function MapSwapModal() {
 					Inset(8).nodes([
 						Screen(SwapMapViewState, true).nodes([
 							Div().classes('pointer fill-all flex flex-center', styles.selectionFrame).nodes([
-								stars2 = Img().src('be://get-res-image/STAR_PIC').style({
+								stars2 = Img().src(be('get-res-image/STAR_PIC')).style({
 									width: '112px',
 									height: '112px',
 								}),
@@ -102,11 +104,11 @@ export function MapSwapModal() {
 	const setToInstallMapInfo = function (newMapInfo: MapInfo | null) {
 		toInstallMapInfo = newMapInfo;
 		if (newMapInfo) {
-			stars2.element.src = `be://get-wrl-minimap/${newMapInfo.mapHashId}`;
+			stars2.element.src = be(`get-wrl-minimap/${newMapInfo.mapHashId}`);
 			emptyText2.element.style.display = 'none';
 			toInstallMapName.text(newMapInfo.name);
 		} else {
-			stars2.element.src = `be://get-res-image/STAR_PIC`;
+			stars2.element.src = be(`get-res-image/STAR_PIC`);
 			emptyText2.element.style.display = 'block';
 			toInstallMapName.text('[empty]');
 		}
@@ -115,11 +117,11 @@ export function MapSwapModal() {
 	const setToArchiveMapInfo = function (newMapInfo: MapInfo | null) {
 		toArchiveMapInfo = newMapInfo;
 		if (newMapInfo) {
-			stars1.element.src = `be://get-wrl-minimap/${newMapInfo.mapHashId}`;
+			stars1.element.src = be(`get-wrl-minimap/${newMapInfo.mapHashId}`);
 			emptyText1.element.style.display = 'none';
 			toArchiveMapName.text(newMapInfo.name);
 		} else {
-			stars1.element.src = `be://get-res-image/STAR_PIC`;
+			stars1.element.src = be(`get-res-image/STAR_PIC`);
 			emptyText1.element.style.display = 'block';
 			toArchiveMapName.text('[empty]');
 		}

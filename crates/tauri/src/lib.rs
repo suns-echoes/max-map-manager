@@ -63,9 +63,13 @@ pub fn run() {
 			// If MAX.RES is not found SETUP is required
 			{
 				let game_dir_path = app_state.game_dir_path();
-				let max_res_path = game_dir_path.join("MAX.RES");
+				let mut max_res_path = game_dir_path.join("MAX.RES");
 				let saves_dir_path = app_state.saves_dir_path();
 				let archive_dir_path = app_state.archive_dir_path();
+
+				if !max_res_path.exists() {
+					max_res_path = game_dir_path.join("max.res");
+				}
 
 				if !max_res_path.exists() || !saves_dir_path.exists() || !archive_dir_path.exists() {
 					app_state.set_needs_setup(true);

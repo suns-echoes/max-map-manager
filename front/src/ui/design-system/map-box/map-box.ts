@@ -1,3 +1,4 @@
+import { be } from '^lib/be';
 import { Effect } from '^lib/reactive/effect.class';
 import { Div, Img } from '^lib/reactive/html-node.elements';
 
@@ -6,8 +7,8 @@ import { ViewState } from '^state/app-state';
 import { Screen } from '^ds/screen/screen';
 import { Inset } from '^ds/inset/inset';
 
-import styles from './map-box.module.css';
 import { EmptyText } from '../fx/empty-text/empty-text';
+import styles from './map-box.module.css';
 
 
 export interface MapBoxProps {
@@ -22,7 +23,7 @@ export function MapBox(viewState: ViewState, mapSlotIndex: number) {
 			Div().classes(styles.mapBox).nodes([
 				mapScreen = Screen(viewState, true).nodes([
 					Div().classes('pointer fill-all flex flex-center', styles.selectionFrame).nodes([
-						stars = Img().src('be://get-res-image/STAR_PIC').style({
+						stars = Img().src(be('get-res-image/STAR_PIC')).style({
 							width: '112px',
 							height: '112px',
 						}),
@@ -47,11 +48,11 @@ export function MapBox(viewState: ViewState, mapSlotIndex: number) {
 
 	mapBox.x.setMapInfo = function (newMapInfo: MapInfo | null) {
 		if (newMapInfo) {
-			stars.element.src = `be://get-wrl-minimap/${newMapInfo.mapHashId}`;
+			stars.element.src = be(`get-wrl-minimap/${newMapInfo.mapHashId}`);
 			emptyText.element.style.display = 'none';
 			mapHashId = newMapInfo.mapHashId;
 		} else {
-			stars.element.src = `be://get-res-image/STAR_PIC`;
+			stars.element.src = be(`get-res-image/STAR_PIC`);
 			emptyText.element.style.display = 'block';
 			mapHashId = null;
 		}

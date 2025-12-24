@@ -3,7 +3,11 @@ use tauri::http;
 use crate::{
     GLOBAL_APP_STATE,
     internal_server::{
-        create_error_response::create_error_response, request_handlers::{get_file_request, get_res_image_request, get_wrl_bigmap_request, get_wrl_minimap_request},
+        create_error_response::create_error_response,
+        request_handlers::{
+            get_file_request, get_res_image_request, get_wrl_bigmap_request,
+            get_wrl_minimap_request,
+        },
     },
 };
 
@@ -18,7 +22,7 @@ pub fn handle_request(request: http::Request<Vec<u8>>) -> http::Response<Vec<u8>
     // example: /get-file/FILE_TAG?mime/type
     let url = request.uri();
     let path = url.to_string();
-    let url_parts: Vec<&str> = path.split('/').filter(|s| !s.is_empty()).collect();
+    let url_parts: Vec<&str> = path.split('/').filter(|s| !s.is_empty()).skip(1).collect();
 
     if url_parts.len() < 2 {
         return http::Response::builder()
@@ -44,13 +48,13 @@ pub fn handle_request(request: http::Request<Vec<u8>>) -> http::Response<Vec<u8>
         return create_error_response(503, "Application setup is required");
     }
 
-	if asset_type == "get-res-image" {
-		return get_res_image_request(url_parts);
+    if asset_type == "get-res-image" {
+        return get_res_image_request(url_parts);
     } else if asset_type == "get-wrl-minimap" {
-		return get_wrl_minimap_request(url_parts);
+        return get_wrl_minimap_request(url_parts);
     } else if asset_type == "get-wrl-bigmap" {
-		return get_wrl_bigmap_request(url_parts, &path);
-	} else {
-		return create_error_response(500, "Unknown asset type");
-	}
+        return get_wrl_bigmap_request(url_parts, &path);
+    } else {
+        return create_error_response(500, "Unknown asset type");
+    }
 }
