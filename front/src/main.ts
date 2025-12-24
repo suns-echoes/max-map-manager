@@ -93,14 +93,14 @@ if (SHOULD_SHOW_SETUP_VIEW) {
 // == Application Initialization ==
 
 else {
-	const unlisten = await listen('backend-message:progress', (event) => {
-		AppState.progress.set(event.payload as number);
-	});
+	// const unlisten = await listen('backend-message:progress', (event) => {
+	// 	AppState.progress.set(event.payload as number);
+	// });
 
 	{
 		loadingModal.x.open();
 		loadingModal.text('loading maps data');
-		loadingModal.x.break(Math.random() * 2000 + 2000);
+		loadingModal.x.break(Math.random() * 2000 + 1000);
 
 		await sleep(100);
 
@@ -116,16 +116,14 @@ else {
 
 		await sleep(100);
 
+		AppState.progress.set(100);
 		setTimeout(() => {
-			AppState.progress.set(100);
-			setTimeout(() => {
-				loadingModal.x.close();
-				AppState.focusView(MainViewState);
-			}, 200);
-		}, 200);
+			loadingModal.x.close();
+			AppState.focusView(MainViewState);
+		}, 800);
 	}
 
-	unlisten();
+	// unlisten();
 }
 
 // == Development Tools ==

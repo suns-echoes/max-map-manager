@@ -51,6 +51,8 @@ export function LoadingModal() {
 		loadingBar.element.style.width = `${value}%`;
 	};
 
+	loadingBar.element.style.width = '0%';
+
 	modal.x.getProgress = function () {
 		return progressValue;
 	};
