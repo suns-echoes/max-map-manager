@@ -93,9 +93,9 @@ if (SHOULD_SHOW_SETUP_VIEW) {
 // == Application Initialization ==
 
 else {
-	// const unlisten = await listen('backend-message:progress', (event) => {
-	// 	AppState.progress.set(event.payload as number);
-	// });
+	const unlisten = await listen('backend-message:progress', (event) => {
+		AppState.progress.set(event.payload as number);
+	});
 
 	{
 		loadingModal.x.open();
@@ -123,7 +123,7 @@ else {
 		}, 800);
 	}
 
-	// unlisten();
+	unlisten();
 }
 
 // == Development Tools ==
