@@ -217,6 +217,10 @@ impl AppState {
             .ok();
     }
 
+	pub fn get_known_maps(&self) -> KnownMaps {
+		self.internal.read().unwrap().known_maps.clone()
+	}
+
     pub fn set_known_maps(&self, known_maps: KnownMaps) {
         self.internal.write().unwrap().known_maps = known_maps;
     }

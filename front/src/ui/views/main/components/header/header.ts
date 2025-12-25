@@ -10,10 +10,13 @@ import { Heading1 } from '^ds/headings/headings';
 import { helpModal } from '^ds/help-modal/help-modal';
 
 import styles from './header.module.css';
+import { importNewMap } from '../../../../../actions/import-new-map';
+import { MainViewState } from '../../../../../app-state/main-view-state';
+import { createMapSlotName } from '../../../../../lib/create-map-slot-name';
 
 
 export function Header() {
-	let archiveButton, helpButton;
+	let importButton, archiveButton, helpButton;
 
 	const header = (
 		Section().classes(styles.header, 'flex flex-row flex-spread ph-16').nodes([
@@ -23,13 +26,25 @@ export function Header() {
 				StandardBrokenButton('').nodes([
 					...'R̵̳E̷͎_̷̧E̷̹ /̵̖'.split('').map((char) => Span().text(char)),
 				]),
-				StandardButton('IMPORT'),
+				importButton = StandardButton('IMPORT'),
 				archiveButton = ToggleButton('ARCHIVE').id('archive-toggle-button'),
 				helpButton = StandardButton('?'),
 			]),
 			Img().src('./images/vent.png').classes(styles.vent, 'no-grow'),
 		])
 	);
+
+	importButton.addEventListener('click', async function () {
+		const selectedSlotName = createMapSlotName(
+			MainViewState.selectedPlanet.value,
+			MainViewState.selectedMapSlotIndex.value,
+		);
+		const needsUpdate = await importNewMap(selectedSlotName);
+		if (needsUpdate) {
+			MainViewState.update();
+			ArchiveViewState.update();
+		}
+	});
 
 	helpButton.addEventListener('click', function () {
 		helpModal.x.open();

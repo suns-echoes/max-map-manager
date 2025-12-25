@@ -22,5 +22,14 @@ pub use read_wrl_file::*;
 pub mod read_wrl_tail_header;
 pub use read_wrl_tail_header::*;
 
+pub use verify_file::*;
+pub mod verify_file;
+
+pub mod verify_file_content;
+pub use verify_file_content::*;
+
+pub use verify_tail_header::*;
+pub mod verify_tail_header;
+
 pub mod write_wrl_tail_header;
 pub use write_wrl_tail_header::*;

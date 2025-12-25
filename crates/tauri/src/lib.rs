@@ -85,13 +85,16 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-            get_archived_maps_and_saves_command,
-            read_archived_maps_metadata_command,
+			open_dir_path_in_file_explorer_command,
             archive_map_and_saves_command,
             generate_bigmap_preview_command,
             get_app_state_command,
+            get_archived_maps_and_saves_command,
             get_installed_maps_and_saves_command,
+			install_imported_map_command,
             is_setup_required_command,
+            open_devtools_command,
+            read_archived_maps_metadata_command,
             read_installed_maps_metadata_command,
             read_save_files_metadata_command,
             read_settings_command,
@@ -99,8 +102,6 @@ pub fn run() {
             set_app_paths_command,
             verify_dir_path_command,
             verify_game_path_command,
-			open_dir_path_in_file_explorer_command,
-            open_devtools_command,
         ])
         .register_uri_scheme_protocol("be", move |_app, request| {
             internal_server::handle_request(request)

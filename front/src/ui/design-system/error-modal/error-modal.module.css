@@ -1,9 +1,9 @@
 .errorModal {
 	position: relative;
-	width: 301px;
-	height: 231px;
+	width: 480px;
 	padding: 24px;
-	background: url("/images/steel.png");
+	background: url("/images/steel-brkn.png");
+	background-position: 30% 80%;
 }
 
 .title {
@@ -13,19 +13,11 @@
 	text-align: center;
 }
 
-.message {
-	padding: 8px;
-	color: var(--text-black-color);
-}
-
 .buttons {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	padding: 16px 16px 0 16px;
 	gap: 8px;
-	position: absolute;
-	bottom: 20px;
-	right: 16px;
-	left: 16px;
 }

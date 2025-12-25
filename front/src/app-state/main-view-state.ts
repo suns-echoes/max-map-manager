@@ -5,6 +5,7 @@ import { getInstalledMapsAndSaves } from '^actions/get-installed-maps-and-saves'
 
 import { Screen } from '^ds/screen/screen';
 import { getInstalledMapsInfo } from '../actions/get-installed-maps-info';
+import { createMapSlotName } from '../lib/create-map-slot-name';
 
 
 type MapSlots = Map<MapResName, MapHashId | null>;
@@ -105,10 +106,18 @@ export class MainViewState {
 	 */
 	static refreshMapSelection() {
 		const selectedMapHashId = MainViewState.mapSlots.value.get(
-			`${MainViewState.selectedPlanet.value}_${MainViewState.selectedMapSlotIndex.value + 1}` as MapResName
+			createMapSlotName(
+				MainViewState.selectedPlanet.value,
+				MainViewState.selectedMapSlotIndex.value,
+			)
 		) ?? null;
 		MainViewState.selectedMapHashId.set(selectedMapHashId);
 		MainViewState.selectedMapSlotIndex.emit();
+	}
+
+	static isSelectedSlotEmpty(): boolean {
+		const selectedMapHashId = MainViewState.selectedMapHashId.value;
+		return selectedMapHashId === null;
 	}
 }
 
