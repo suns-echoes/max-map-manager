@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use crate::{
-    hash_wrl_file_without_tail, is_file_size_valid, read_wrl_file, read_wrl_tail_header, verify_file_content, verify_tail_header
+    verify_file_content, verify_tail_header
 };
 
 pub fn verify_file(file_path: &Path) -> Result<bool, String> {

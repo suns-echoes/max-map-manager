@@ -1,4 +1,4 @@
-import { Br, Div, P, Span, Strong } from '^lib/reactive/html-node.elements.ts';
+import { Div, Span, Strong } from '^lib/reactive/html-node.elements.ts';
 
 import { Modal, type ModalInterface } from '^ds/modal/modal.ts';
 
@@ -119,9 +119,18 @@ export function HelpModal() {
 	});
 
 	new Effect(function updateHelpModalStats() {
+		const archivedSaves = [...ArchiveViewState.mapsAndSaves.value].reduce((count, [, mapAndSaves]) => {
+			return count + mapAndSaves.saves.length;
+		}, 0);
+		const installedSaves = `{0x${
+			Array(8).fill(0).map(() => 'abcdef0123456789'.charAt(Math.floor(Math.random() * 16))).join('')
+		}..${
+			'ijklnmopqrstvuw'.charAt(Math.floor(Math.random() * 15))
+		}-}`;
 		installedMapCount.text(`${AppState.mapsInfo.value.size}`);
+		installedSavesCount.text(`${installedSaves}`);
 		archivedMapCount.text(`${ArchiveViewState.mapsInfo.value.size}`);
-		archivedSavesCount.text(`${ArchiveViewState.mapsAndSaves.value.size}`);
+		archivedSavesCount.text(`${archivedSaves}`);
 	}).on([
 		AppState.mapsInfo,
 		ArchiveViewState.mapsInfo,
