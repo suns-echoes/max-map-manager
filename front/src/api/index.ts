@@ -2,6 +2,7 @@ import { archiveMapAndSaves } from './archive-map-and-saves';
 import { generateBigMapPreview } from './generate-bigmap-preview';
 import { getArchivedMapsAndSaves } from './get-archived-maps-and-saves';
 import { isSetupRequired } from './is-setup-required';
+import { openDirPathInFileExplorer } from './open-dir-path-in-file-explorer';
 import { readArchivedMapsMetadata } from './read-archived-maps-metadata';
 import { readInstalledMapsMetadata } from './read-installed-maps-metadata';
 import { readSaveFilesMetadata } from './read-save-files-metadata';
@@ -18,6 +19,7 @@ export const api = {
 	generateBigMapPreview,
 	getArchivedMapsAndSaves,
 	isSetupRequired,
+	openDirPathInFileExplorer,
 	readArchivedMapsMetadata,
 	readInstalledMapsMetadata,
 	readSaveFilesMetadata,

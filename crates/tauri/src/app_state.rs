@@ -278,14 +278,14 @@ impl AppState {
     }
 
     pub fn init_max_res_reader(&self) {
-		if self.get_max_res_reader().is_some() {
-			return;
-		}
+        if self.get_max_res_reader().is_some() {
+            return;
+        }
         let game_dir_path = self.game_dir_path();
         let mut max_res_path = game_dir_path.join("MAX.RES");
         if !max_res_path.exists() {
-			max_res_path = game_dir_path.join("max.res");
-		}
+            max_res_path = game_dir_path.join("max.res");
+        }
         let res_reader = ResReader::new(&max_res_path);
         self.internal.write().unwrap().max_res_reader = Some(res_reader);
     }

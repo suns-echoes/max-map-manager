@@ -24,6 +24,7 @@ pub fn run() {
     log::info!("Starting application...");
 
     tauri::Builder::default()
+        .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())
@@ -35,7 +36,7 @@ pub fn run() {
 
             let app_state = GLOBAL_APP_STATE.clone();
             app_state.set_app_data_dir_path(&app_data_dir);
-			app_state.set_resource_dir_path(&app.path().resource_dir().unwrap());
+            app_state.set_resource_dir_path(&app.path().resource_dir().unwrap());
 
             let settings = app_settings::load_app_settings().map_err(|e| {
                 log::error!("Failed to load app settings: {}", e);
@@ -54,29 +55,30 @@ pub fn run() {
 
             app_state.set_known_maps(known_maps);
 
-			{
-				app_state.set_game_dir_path(&PathBuf::from(settings.game_dir));
-				app_state.set_saves_dir_path(&PathBuf::from(settings.saves_dir));
-				app_state.set_archive_dir_path(&PathBuf::from(settings.archive_dir));
-			}
+            {
+                app_state.set_game_dir_path(&PathBuf::from(settings.game_dir));
+                app_state.set_saves_dir_path(&PathBuf::from(settings.saves_dir));
+                app_state.set_archive_dir_path(&PathBuf::from(settings.archive_dir));
+            }
 
-			// If MAX.RES is not found SETUP is required
-			{
-				let game_dir_path = app_state.game_dir_path();
-				let mut max_res_path = game_dir_path.join("MAX.RES");
-				let saves_dir_path = app_state.saves_dir_path();
-				let archive_dir_path = app_state.archive_dir_path();
+            // If MAX.RES is not found SETUP is required
+            {
+                let game_dir_path = app_state.game_dir_path();
+                let mut max_res_path = game_dir_path.join("MAX.RES");
+                let saves_dir_path = app_state.saves_dir_path();
+                let archive_dir_path = app_state.archive_dir_path();
 
-				if !max_res_path.exists() {
-					max_res_path = game_dir_path.join("max.res");
-				}
+                if !max_res_path.exists() {
+                    max_res_path = game_dir_path.join("max.res");
+                }
 
-				if !max_res_path.exists() || !saves_dir_path.exists() || !archive_dir_path.exists() {
-					app_state.set_needs_setup(true);
-					log::info!("MAX.RES not found, setup required");
-					return Ok(());
-				}
-			}
+                if !max_res_path.exists() || !saves_dir_path.exists() || !archive_dir_path.exists()
+                {
+                    app_state.set_needs_setup(true);
+                    log::info!("MAX.RES not found, setup required");
+                    return Ok(());
+                }
+            }
 
             app_state.init_max_res_reader();
 
@@ -89,14 +91,15 @@ pub fn run() {
             generate_bigmap_preview_command,
             get_app_state_command,
             get_installed_maps_and_saves_command,
-			is_setup_required_command,
+            is_setup_required_command,
             read_installed_maps_metadata_command,
             read_save_files_metadata_command,
-			read_settings_command,
+            read_settings_command,
             restore_map_and_saves_command,
-			set_app_paths_command,
-			verify_dir_path_command,
-			verify_game_path_command,
+            set_app_paths_command,
+            verify_dir_path_command,
+            verify_game_path_command,
+			open_dir_path_in_file_explorer_command,
             open_devtools_command,
         ])
         .register_uri_scheme_protocol("be", move |_app, request| {

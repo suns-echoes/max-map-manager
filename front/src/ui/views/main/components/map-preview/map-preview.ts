@@ -13,6 +13,7 @@ import { Heading3 } from '^ds/headings/headings';
 import { Inset } from '^ds/inset/inset';
 import { Outset } from '^ds/outset/outset';
 import { Screen } from '^ds/screen/screen';
+import { StandardBrokenButton } from '^ds/buttons/standard-broken-button';
 
 import styles from './map-preview.module.css';
 
@@ -28,7 +29,7 @@ export function MapPreview() {
 				Heading3('Map preview').class(styles.title),
 				Div().class('flex gap-16').nodes([
 					archiveButton = StandardButton('ARCHIVE'),
-					StandardButton('EDIT DATA'),
+					StandardBrokenButton('EDIT DATA'),
 					replaceButton = StandardButton('REPLACE'),
 				]),
 			]),

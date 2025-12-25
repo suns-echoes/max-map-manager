@@ -1,6 +1,9 @@
 use std::path::PathBuf;
 
-use crate::{GLOBAL_APP_STATE, app_settings::{self, AppSettings}};
+use crate::{
+    GLOBAL_APP_STATE,
+    app_settings::{self, AppSettings},
+};
 
 #[tauri::command]
 pub fn set_app_paths_command(
@@ -44,14 +47,14 @@ pub fn set_app_paths_command(
     app_state.set_saves_dir_path(&saves_path_buf);
     app_state.set_archive_dir_path(&archive_path_buf);
 
-	app_settings::save_app_settings(&AppSettings {
-		game_dir: max_path_buf.to_string_lossy().to_string(),
-		saves_dir: saves_path_buf.to_string_lossy().to_string(),
-		archive_dir: archive_path_buf.to_string_lossy().to_string(),
-	})?;
+    app_settings::save_app_settings(&AppSettings {
+        game_dir: max_path_buf.to_string_lossy().to_string(),
+        saves_dir: saves_path_buf.to_string_lossy().to_string(),
+        archive_dir: archive_path_buf.to_string_lossy().to_string(),
+    })?;
 
-	app_state.set_needs_setup(false);
-	app_state.init_max_res_reader();
+    app_state.set_needs_setup(false);
+    app_state.init_max_res_reader();
 
     Ok(())
 }

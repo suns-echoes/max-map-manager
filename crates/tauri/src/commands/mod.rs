@@ -40,5 +40,8 @@ pub use verify_dir_path_command::*;
 pub mod verify_game_path_command;
 pub use verify_game_path_command::*;
 
+pub mod open_dir_path_in_file_explorer_command;
+pub use open_dir_path_in_file_explorer_command::*;
+
 pub mod open_devtools_command;
 pub use open_devtools_command::*;

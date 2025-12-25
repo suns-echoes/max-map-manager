@@ -42,7 +42,7 @@ export function SetupWindowLayout() {
 						Inset(4).nodes([
 							Screen(SetupViewState, true, ['p-8']).nodes([
 								Div().classes('flex flex-spread').nodes([
-									B().text('M.A.X. game directory path'),
+									B().text('M.A.X. directory path'),
 									Div().classes('flex gap-16').nodes([
 										Div().text('. . . . . . . . . . . . . . . . . .'),
 										browseForMax = Div().classes('text-blue pointer text-bold').text('[ BROWSE ]'),

@@ -6,11 +6,12 @@
     "main"
   ],
   "permissions": [
+	"shell:allow-open",
     "core:default",
-    "opener:default",
+    "core:window:allow-set-size",
     "dialog:default",
-    "process:default",
-	"core:window:allow-set-size"
+    "opener:default",
+    "process:default"
   ],
   "plugins": {
     "fs": {

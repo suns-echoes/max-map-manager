@@ -65,8 +65,8 @@ pub fn save_app_settings(settings: &AppSettings) -> Result<(), String> {
             settings_file_path.display()
         );
         log::error!("{}", e);
-		format!("Failed to create settings file: {}", e)
-	})?;
+        format!("Failed to create settings file: {}", e)
+    })?;
 
     serde_json::to_writer(file, settings).map_err(|e| {
         log::error!(
@@ -104,10 +104,7 @@ fn load_default_settings() -> Result<AppSettings, String> {
 fn read_settings_from_file(file: File, file_path: &Path) -> Result<AppSettings, String> {
     let reader = BufReader::new(file);
     serde_json::from_reader(reader).map_err(|e| {
-        log::error!(
-            "Failed to parse settings JSON: {}",
-            file_path.display()
-        );
+        log::error!("Failed to parse settings JSON: {}", file_path.display());
         log::error!("{}", e);
         format!("Failed to parse settings JSON: {}", e)
     })

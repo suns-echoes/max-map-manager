@@ -45,6 +45,10 @@
 	border-style: solid;
 }
 
+.indent-32 {
+	margin-left: 32px;
+}
+
 .inset {
 	border-top-color: var(--border-dark-color);
 	border-right-color: var(--border-light-color);

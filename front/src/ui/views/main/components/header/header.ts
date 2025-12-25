@@ -7,12 +7,13 @@ import { StandardBrokenButton } from '^ds/buttons/standard-broken-button';
 import { StandardButton } from '^ds/buttons/standard-button';
 import { ToggleButton } from '^ds/buttons/toggle-button';
 import { Heading1 } from '^ds/headings/headings';
+import { helpModal } from '^ds/help-modal/help-modal';
 
 import styles from './header.module.css';
 
 
 export function Header() {
-	let archiveButton;
+	let archiveButton, helpButton;
 
 	const header = (
 		Section().classes(styles.header, 'flex flex-row flex-spread ph-16').nodes([
@@ -24,13 +25,15 @@ export function Header() {
 				]),
 				StandardButton('IMPORT'),
 				archiveButton = ToggleButton('ARCHIVE').id('archive-toggle-button'),
-				StandardBrokenButton('').nodes([
-					...'~?̴̖'.split('').map((char) => Span().text(char)),
-				]),
+				helpButton = StandardButton('?'),
 			]),
 			Img().src('./images/vent.png').classes(styles.vent, 'no-grow'),
 		])
 	);
+
+	helpButton.addEventListener('click', function () {
+		helpModal.x.open();
+	});
 
 	archiveButton.addEventListener('click', function () {
 		ArchiveViewState.showArchiveWindow.apply(function (isShown) {

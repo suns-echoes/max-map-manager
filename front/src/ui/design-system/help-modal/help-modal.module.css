@@ -1,0 +1,7 @@
+.helpModal {
+	position: relative;
+	width: 800px;
+	border-radius: 4px;
+	background: url("/images/steel.png");
+	background-position: 90% 90%;
+}
