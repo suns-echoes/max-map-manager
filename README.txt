@@ -26,7 +26,7 @@ M.M.M.   RELEASE NOTES  v.0.9.4
 (1)   Requirements
 --------------------------------------------------------------------------------
 
- REQUIRED:
+REQUIRED:
 
         - M.M.M. requires original game to be installed
         - Linux Debian 13 or newer
@@ -66,28 +66,65 @@ Planned Updates
 (3)    INSTRUCTION
 --------------------------------------------------------------------------------
 
-To setup the MMM correctly you need original M.A.X. installation.
+Prerequisites
 
-After installing the software you will be asked to provide 3 path:
+    M.A.X. Installation: A valid installation of the original game is required.
 
-    1. Path to M.A.X. installation directory (must contain MAX.RES file)
+    Directory Preparation: Create an empty folder to serve as your map archive
+                           before launching the software.
 
-    2. Path to save files directory;
-       this will be the M.A.X. installation directory
-       or the MAX Port installation directory.
+Initial Setup
 
-    3. Path to archive directory;
-       this directory should be created upfront, it is where archived maps will be stored.
+    Upon first execution, the following paths must be configured:
 
-In the main view there are buttons that allow the following:
+        M.A.X. Installation Directory: The root folder of the game.
+                                       It must contain the MAX.RES
+                                       file for verification.
 
-Header section:
+        Save Files Directory: The directory where the game manages state data.
+                              This is typically the root M.A.X. folder
+                              or the MAX Port directory.
 
-    IMPORT: Opens file picker and after selection custom map file it will be immediately installed in game directory in selected in-game slot.
-    If this slot already contains a map, than it will be automatically put into archive.
-    If selected file is broken or cannot be imported, the error message will show up.
+        Archive Directory: The dedicated folder where MMM will store
+                           and index archived maps and their associated
+                           save files.
 
-    ARCHIVE:
+UI Functionality
+
+    Header Section
+
+        IMPORT: Select an external map file via the file picker for import.
+
+            Logic: The map is immediately installed into the currently selected
+                   in-game map slot.
+
+            Auto-Archival: If the target slot is occupied, the existing map
+                           and its related saves are automatically moved
+                           to the archive before the new map is deployed.
+
+            Validation: Broken or incompatible files will trigger
+                        an error message and abort the process.
+
+        ARCHIVE (Toggle): Switches the display between
+                          the Main View (Active Game Slots) and
+                          the Archive View (Stored Maps).
+
+        ? (Info): Displays technical information and software configuration.
+
+    Main View (Active Game Slots)
+
+        ARCHIVE: Manually moves the selected map and all associated save files
+                 from the game directory to the archive.
+
+        REPLACE: Switches context to the Archive View to select a specific map
+                 for deployment into the active slot.
+
+    Archive View (Stored Maps)
+
+        INSTALL: Swaps the map currently selected in the Main View
+                 with the chosen archived map.
+
+                 This operation also moves the linked save states.
 
 --------------------------------------------------------------------------------
 (4)    CREDITS
