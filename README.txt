@@ -1,0 +1,190 @@
+--------------------------------------------------------------------------------
+Dealer in Worlds                   Tech Support: [M.A.X. Port Discord]
+                  email: dealer_in_wor0xffee000001
+--------------------------------------------------------------------------------
+Non Tech Support Questions/Comments send [M.A.X. Port Discord / max-map-manager]
+--------------------------------------------------------------------------------
+
+
+
+M.M.M.   RELEASE NOTES  v.0.9.4
+
+
+       TABLE of CONTENTS
+
+    (1) Requirements
+    (2) Features
+    (3) Instruction
+    (4) Credits
+    (5) Source Code License (MIT)
+    (6) End User License Agreement (EULA)
+    (7) Disclaimer of Warranty (Limited Warranty)
+    (8) Contact & Contributions
+
+
+--------------------------------------------------------------------------------
+(1)   Requirements
+--------------------------------------------------------------------------------
+
+ REQUIRED:
+
+        - M.M.M. requires original game to be installed
+        - Linux Debian 13 or newer
+        - Linux Ubuntu 22 or newer
+        - Windows 10 or newer
+
+--------------------------------------------------------------------------------
+(2)    FEATURES
+--------------------------------------------------------------------------------
+
+A utility for managing, archiving, and deploying map files and associated
+save states for Mechanized Assault & eXploration (M.A.X.).
+
+Technical Features
+
+    Easy Map Management: Indexing and organization of M.A.X. map assets.
+
+    Automated Archival: Synchronized backup of .WRL files and their
+                        corresponding save game files into a unified archive.
+
+    Restoration (Installation): Deploys archived maps and associated save states
+                                to the active game directory for immediate use.
+
+    Map Importing: Support for importing external map files into the game.
+
+Planned Updates
+
+    Metadata Editing: Interface for modifying map metadata information,
+                      like map name, author, creation date, ...
+
+    Direct-to-Archive Import: Mechanism to import files directly into
+                              the archive.
+
+    Batch Processing: Support for importing multiple at once.
+
+--------------------------------------------------------------------------------
+(3)    INSTRUCTION
+--------------------------------------------------------------------------------
+
+To setup the MMM correctly you need original M.A.X. installation.
+
+After installing the software you will be asked to provide 3 path:
+
+    1. Path to M.A.X. installation directory (must contain MAX.RES file)
+
+    2. Path to save files directory;
+       this will be the M.A.X. installation directory
+       or the MAX Port installation directory.
+
+    3. Path to archive directory;
+       this directory should be created upfront, it is where archived maps will be stored.
+
+In the main view there are buttons that allow the following:
+
+Header section:
+
+    IMPORT: Opens file picker and after selection custom map file it will be immediately installed in game directory in selected in-game slot.
+    If this slot already contains a map, than it will be automatically put into archive.
+    If selected file is broken or cannot be imported, the error message will show up.
+
+    ARCHIVE:
+
+--------------------------------------------------------------------------------
+(4)    CREDITS
+--------------------------------------------------------------------------------
+
+App Design:         Aneta Suns
+
+Programmer:         Aneta Suns
+
+2D Artists:         Aneta Suns
+
+Testers:            Aneta Suns
+
+    If you want to be mentiond here, please report bugs!
+
+--------------------------------------------------------------------------------
+(5)     SOURCE CODE LICENSE (MIT)
+--------------------------------------------------------------------------------
+
+MIT License
+
+Copyright (c) 2025 Aneta Suns
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the “Software”),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+(6)     APPLICATION END USER LICENSE AGREEMENT (EULA)
+--------------------------------------------------------------------------------
+
+Product:
+
+    M.A.X. Map Manager
+
+Copyright Holder:
+
+    Aneta Suns
+
+License & Distribution:
+
+    This software is provided as Freeware.
+
+    You are granted a non-exclusive right to use this software
+    for any personal or non-commercial purpose.
+
+You are encouraged to:
+
+    Make copies of the software for backup or archival purposes.
+
+    Distribute, share, and give away the original,
+    unmodified compiled software to others free of charge.
+
+Restrictions:
+
+    You may not sell, rent, or lease the compiled software for profit.
+
+    If you distribute the software, you must include this original copyright
+    notice and license.
+
+--------------------------------------------------------------------------------
+(7)     DISCLAIMER OF WARRANTY (LIMITED WARRANTY)
+--------------------------------------------------------------------------------
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+(8)     CONTACT & CONTRIBUTIONS
+--------------------------------------------------------------------------------
+
+For bug reports or technical inquiries, please see:
+
+    https://discord.com/channels/1085572457466974248/1390749356222709790
+
+    or
+
+    https://github.com/suns-echoes/max-map-manager/issues
+
+--EOF--

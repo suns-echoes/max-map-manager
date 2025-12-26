@@ -33,6 +33,12 @@ export function HelpModal() {
 			Div().nodes([
 				Inset(8, ['w-full']).nodes([
 					Screen(HelpViewState, false, ['p-16']).nodes([
+						Strong().text('Version:'),
+						Div().class('indent-32').nodes([
+							Div().nodes([
+								Div().text('M.A.X. Map Manager v0.9.4'),
+							]),
+						]),
 						Strong().text('Paths:'),
 						Div().class('indent-32').nodes([
 							Div().nodes([

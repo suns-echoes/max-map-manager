@@ -10330,7 +10330,7 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 * bmp (v0.1.0)
 * res_reader (v0.1.0)
 * saves (v0.1.0)
-* max-map-manager (v0.9.3)
+* max-map-manager (v0.9.4)
 * test_utils (v0.1.0)
 * wrl (v0.1.0)
 * block2 (v0.6.2)
