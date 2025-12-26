@@ -46,7 +46,9 @@
 		],
 		"resources": [
 			"resources/mmm.res",
-			"resources/settings.json"
+			"resources/settings.json",
+			"../../README.txt",
+			"../../THIRD-PARTY-LICENSES.md"
 		],
 		"linux": {
 			"deb": {
