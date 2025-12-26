@@ -136,9 +136,10 @@ Programmer:         Aneta Suns
 
 2D Artists:         Aneta Suns
 
-Testers:            Aneta Suns
+Testers:            klei1984
+                    Aneta Suns
 
-    If you want to be mentiond here, please report bugs!
+    If you want to be mentiond here, please report bug!
 
 --------------------------------------------------------------------------------
 (5)     SOURCE CODE LICENSE (MIT)
