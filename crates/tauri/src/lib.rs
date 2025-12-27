@@ -24,6 +24,16 @@ pub fn run() {
     log::info!("Starting application...");
 
     tauri::Builder::default()
+        .plugin(tauri_plugin_single_instance::init(|app, args, cwd| {
+            log::info!("Another instance attempted to start.");
+            log::info!("Args: {:?}, CWD: {:?}", args, cwd);
+            let window = app.get_webview_window("main").unwrap();
+            if window.is_minimized().unwrap() {
+                window.unminimize().unwrap();
+            }
+            window.show().unwrap();
+            window.set_focus().unwrap();
+        }))
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_dialog::init())
@@ -85,13 +95,13 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-			open_dir_path_in_file_explorer_command,
+            open_dir_path_in_file_explorer_command,
             archive_map_and_saves_command,
             generate_bigmap_preview_command,
             get_app_state_command,
             get_archived_maps_and_saves_command,
             get_installed_maps_and_saves_command,
-			install_imported_map_command,
+            install_imported_map_command,
             is_setup_required_command,
             open_devtools_command,
             read_archived_maps_metadata_command,
