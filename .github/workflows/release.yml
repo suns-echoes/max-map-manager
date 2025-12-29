@@ -43,6 +43,9 @@ jobs:
       - name: install frontend dependencies
         run: npm install
 
+      - name: generate license file
+        run: npm run gen-lic
+
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:hacks": "cd hacks && npm run build:watch",
-    "build": "tsc && cp ./README.txt ./crates/tauri/resources/ && npm run gen-lic && vite build",
+    "build": "tsc && cp ./README.txt ./crates/tauri/resources/ && vite build",
     "build:hacks": "cd hacks && npm run build",
     "lint": "tsc --noEmit -p .",
     "preview": "vite preview",
