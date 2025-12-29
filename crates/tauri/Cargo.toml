@@ -1,6 +1,6 @@
 [package]
 name = "max-map-manager"
-version = "0.9.4"
+version = "0.9.5"
 description = "The M.A.X. Map Manager"
 authors = ["Aneta Suns"]
 edition = "2024"

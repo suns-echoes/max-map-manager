@@ -1,27 +1,28 @@
 import { Div, Span, Strong } from '^lib/reactive/html-node.elements.ts';
+import { Effect } from '^lib/reactive/effect.class';
+import { getAppDataPath, getAppVersion, getInstallationPath } from '^lib/info';
 
-import { Modal, type ModalInterface } from '^ds/modal/modal.ts';
+import { Modal } from '^ds/modal/modal.ts';
 
 import { AppState } from '^state/app-state';
 import { HelpViewState } from '^state/help-view-state';
+import { ArchiveViewState } from '^state/archive-view-state';
 
 import { getSettings } from '^actions/get-settings';
+import { openDirPathInFileExplorer } from '^actions/open-dir-path-in-file-explorer';
 
 import { Inset } from '../inset/inset';
 import { Outset } from '../outset/outset';
 import { Screen } from '../screen/screen';
-
 import { Heading3 } from '../headings/headings';
 import { StandardButton } from '../buttons/standard-button';
 
 import styles from './help-modal.module.css';
-import { Effect } from '../../../lib/reactive/effect.class';
-import { ArchiveViewState } from '../../../app-state/archive-view-state';
-import { openDirPathInFileExplorer } from '../../../actions/open-dir-path-in-file-explorer';
 
 
 export function HelpModal() {
-	let maxPath, savesPath, archivePath,
+	let resourcePath, appDataPath,
+		maxPath, savesPath, archivePath,
 		installedMapCount, installedSavesCount,
 		archivedMapCount, archivedSavesCount,
 		doneButton;
@@ -36,7 +37,9 @@ export function HelpModal() {
 						Strong().text('Version:'),
 						Div().class('indent-32').nodes([
 							Div().nodes([
-								Div().text('M.A.X. Map Manager v0.9.4'),
+								Div().text(`M.A.X. Map Manager v${getAppVersion()}`),
+								resourcePath = Div().class('pointer indent-32 text-yellow').text('...'),
+								appDataPath = Div().class('pointer indent-32 text-yellow').text('...'),
 							]),
 						]),
 						Strong().text('Paths:'),
@@ -83,6 +86,20 @@ export function HelpModal() {
 
 	// --- Logic ---
 
+	getInstallationPath().then((path) => {
+		resourcePath.text(path);
+		resourcePath.addEventListener('click', function () {
+			openDirPathInFileExplorer(path);
+		});
+	});
+
+	getAppDataPath().then((path) => {
+		appDataPath.text(path);
+		appDataPath.addEventListener('click', function () {
+			openDirPathInFileExplorer(path);
+		});
+	});
+
 	maxPath.addEventListener('click', function () {
 		openDirPathInFileExplorer(maxPath.element.textContent || '');
 	});
@@ -108,11 +125,11 @@ export function HelpModal() {
 		}
 	});
 
-	const _open = modal.x.open as ModalInterface['open'];
+	const modalX = { ...modal.x };
 
 	modal.x.open = function () {
 		AppState.focusView(HelpViewState);
-		_open();
+		modalX.open();
 	};
 
 	modal.x.close = function () {

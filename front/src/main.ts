@@ -1,7 +1,7 @@
 // == Global Exposure for Hacks ==
 
-import { HTMLNode } from './lib/reactive/html-node.class';
-import * as HTMLNodeElements from './lib/reactive/html-node.elements';
+import { HTMLNode } from '^lib/reactive/html-node.class';
+import * as HTMLNodeElements from '^lib/reactive/html-node.elements';
 
 
 // == Application Entry Point ==
@@ -9,7 +9,6 @@ import * as HTMLNodeElements from './lib/reactive/html-node.elements';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { LogicalSize } from '@tauri-apps/api/dpi';
 
-import { exit } from '@tauri-apps/plugin-process';
 import { listen } from '@tauri-apps/api/event';
 
 import { be } from '^lib/be';
@@ -44,6 +43,18 @@ async function resizeWindowLogical(width: number, height: number) {
 	}
 }
 
+function showSetupView() {
+	const setupWindowLayout = SetupWindowLayout();
+	document.body.appendChild(setupWindowLayout.element);
+	AppState.focusView(SetupViewState);
+
+	setTimeout(() => {
+		const disclaimerWindowLayout = DisclaimerWindowLayout();
+		document.body.appendChild(disclaimerWindowLayout.element);
+		AppState.focusView(DisclaimerViewState);
+	}, 100);
+}
+
 resizeWindowLogical(1128, 832);
 
 
@@ -52,7 +63,7 @@ window._ = [
 	HTMLNode,
 	HTMLNodeElements,
 	void 0,
-	exit,
+	closeApp,
 	'',
 	() => {
 		AppState.focusView(MainViewState);
@@ -61,6 +72,9 @@ window._ = [
 		}, 300);
 	},
 	be,
+	showSetupView,
+	getAppVersion,
+	reloadUI,
 ];
 
 // @ts-ignore
@@ -81,15 +95,7 @@ console.log('SHOULD_SHOW_SETUP_VIEW', SHOULD_SHOW_SETUP_VIEW);
 // == Application Setup ==
 
 if (SHOULD_SHOW_SETUP_VIEW) {
-	const setupWindowLayout = SetupWindowLayout();
-	document.body.appendChild(setupWindowLayout.element);
-	AppState.focusView(SetupViewState);
-
-	setTimeout(() => {
-		const disclaimerWindowLayout = DisclaimerWindowLayout();
-		document.body.appendChild(disclaimerWindowLayout.element);
-		AppState.focusView(DisclaimerViewState);
-	}, 100);
+	showSetupView();
 }
 
 // == Application Initialization ==
@@ -130,6 +136,9 @@ else {
 
 // == Development Tools ==
 import { invoke } from '@tauri-apps/api/core';
+import { closeApp } from './actions/close-app.js';
+import { getAppVersion } from './lib/info.js';
+import { reloadUI } from './actions/reload-ui.js';
 
 if (!import.meta.env.DEV) {
 	window.addEventListener('contextmenu', (e) => {

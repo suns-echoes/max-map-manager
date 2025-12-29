@@ -16,3 +16,16 @@
 		height: 400px;
 	}
 }
+
+.confirmModal {
+	width: 400px;
+	background: url("/images/steel-brkn.png");
+	background-position: 70% 80%;
+}
+
+.confirmModalContent {
+	margin: 8px 0;
+	padding: 16px;
+	background: #0008;
+	border-radius: 8px;
+}

@@ -1,12 +1,13 @@
 import { SetupViewState } from '^state/setup-view-state';
 
-import { B, Br, Div, Section, TextInput } from '^lib/reactive/html-node.elements';
+import { B, Br, Div, P, Section, Strong, TextInput } from '^lib/reactive/html-node.elements';
 
 import { openFolderSelectDialog } from '^actions/open-folder-select-dialog';
 import { checkGamePath } from '^actions/check-game-path';
 import { savePaths } from '^actions/save-paths';
 import { checkIfPathIsDirectory } from '^actions/check-if-path-is-directory';
 import { getSettings } from '^actions/get-settings';
+import { closeApp } from '^actions/close-app';
 
 import { Modal } from '^ds/modal/modal';
 import { Outset } from '^ds/outset/outset';
@@ -21,10 +22,15 @@ import { SquareBrokenButton } from '^ds/buttons/square-broken-button';
 import styles from './layout.module.css';
 
 
+interface ConfirmModal {
+	open: () => Promise<void>;
+	close: (shouldConfirm?: boolean) => void;
+}
+
 export function SetupWindowLayout() {
 	let browseForMax, browseForSaves, browseForArchive,
 		inputMaxPath, inputSavesPath, inputArchivePath,
-		continueButton, dbgout;
+		quitButton, continueButton, dbgout;
 
 	const setupWindowLayout = (
 		Modal().nodes([
@@ -91,7 +97,7 @@ export function SetupWindowLayout() {
 							SquareButton(40, 'F4'),
 						]),
 						Inset(4, ['inline-block']).classes('flex flex-spread gap-4 p-4').nodes([
-							StandardButton('QUIT'),
+							quitButton = StandardButton('QUIT'),
 							StandardBrokenButton('Opt:ou .'),
 							StandardBrokenButton('About'),
 							continueButton = StandardButton('Continue'),
@@ -101,6 +107,61 @@ export function SetupWindowLayout() {
 			]),
 		])
 	);
+
+	// == Confirm Modal ==
+
+	let confirmModalCancel, confirmModalConfirm;
+
+	const confirmModal = Modal<ConfirmModal>().nodes([
+		Section().classes(styles.confirmModal).nodes([
+			Outset(8).classes('flex flex-col gap-8 p-16').nodes([
+				Heading1('Confirm changes'),
+				Inset(2),
+				Div().class(styles.confirmModalContent).nodes([
+					Div().text('Are you sure you want to save these paths and continue?'),
+					Br(),
+					Div().text('The Archive directory will store your map and save files that are not currently used by the game. If you remove this directory you will lose access to those maps and saves!'),
+				]),
+				Inset(2),
+				Div().classes('flex flex-spread').nodes([
+					confirmModalCancel = StandardButton('Cancel'),
+					confirmModalConfirm = StandardButton('Confirm'),
+				]),
+			]),
+		]),
+	]);
+
+	const _confirmModalX = { ...confirmModal.x };
+	let _confirmModalPromiseResolvers: PromiseWithResolvers<void> | null = null;
+	confirmModal.x = {
+		open: () => {
+			_confirmModalPromiseResolvers = Promise.withResolvers();
+			_confirmModalX.open();
+			return _confirmModalPromiseResolvers.promise;
+		},
+		close: (shouldConfirm?: boolean) => {
+			if (shouldConfirm) {
+				_confirmModalPromiseResolvers!.resolve();
+			} else {
+				_confirmModalPromiseResolvers!.reject();
+			}
+			_confirmModalX.close();
+		},
+	};
+
+	confirmModalCancel.addEventListener('click', () => {
+		confirmModal.x.close(false);
+	});
+
+	confirmModalConfirm.addEventListener('click', () => {
+		confirmModal.x.close(true);
+	});
+
+	// == Setup Window Logic ==
+
+	quitButton.addEventListener('click', () => {
+		closeApp();
+	});
 
 	// @ts-ignore
 	window.addEventListener('app-view-changed', async (event: CustomEvent) => {
@@ -159,11 +220,24 @@ export function SetupWindowLayout() {
 	});
 
 	inputArchivePath.addEventListener('mouseenter', () => {
-		dbgout.text('Input the path to the Archive directory.');
+		dbgout.nodes([
+			P().text('Input the path to the Archive directory.'),
+			P().text('(it should be manually created)'),
+			P().text('This is where map files are stored for later use.'),
+			Strong().text('Warning: removing this directory may lead to loss of maps and saves!'),
+		]);
 	});
 
 	continueButton.addEventListener('click', async () => {
-		// TODO: Finish setup validation and continuation logic
+		try {
+			console.log('Opening confirm modal...');
+			await confirmModal.x.open();
+			console.log('Confirm modal closed with confirm.');
+		} catch {
+			console.log('Confirm modal was cancelled.');
+			return;
+		}
+
 		const maxPath = inputMaxPath.element.value;
 		const savesPath = inputSavesPath.element.value;
 		const archivePath = inputArchivePath.element.value;
